@@ -23,9 +23,9 @@ class ReleaseFactory extends Factory
     {
         return [
             "name" => $this->faker->word . " " . $this->faker->word,
-            "artist name" => $this->faker->word,
+            "artist_name" => $this->faker->word,
             "description" => $this->faker->word,
-            "release date" => $this->faker->dateTimeBetween($startDate = "0 years", $endDate = "+10 years")
+            "release_date" => $this->faker->dateTimeBetween($startDate = "0 years", $endDate = "+10 years")
         ];
     }
 }
