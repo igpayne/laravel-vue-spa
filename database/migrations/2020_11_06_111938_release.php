@@ -16,9 +16,9 @@ class Release extends Migration
         Schema::create('releases', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string("artist name");
+            $table->string("artist_name");
             $table->string('description');
-            $table->dateTime("release date");
+            $table->dateTime("release_date");
             $table->timestamps();
         });
     }
