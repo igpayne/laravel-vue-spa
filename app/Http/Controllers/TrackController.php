@@ -14,7 +14,9 @@ class TrackController extends Controller
      */
     public function index()
     {
-        //
+        $tracks = Track::all();
+
+        return $tracks;
     }
 
     /**
@@ -36,7 +38,7 @@ class TrackController extends Controller
      */
     public function show(Track $track)
     {
-        //
+        return $track;
     }
 
     /**

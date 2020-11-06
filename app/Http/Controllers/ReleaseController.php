@@ -14,7 +14,9 @@ class ReleaseController extends Controller
      */
     public function index()
     {
-        //
+        $releases = Release::orderBy("release date", "desc")->get();
+
+        return $releases;
     }
 
     /**
@@ -25,7 +27,19 @@ class ReleaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input("name");
+        $artist_name = $request->input("artist name");
+        $description = $request->input("description");
+        $release_date = $request->input("release date");
+
+        $new_release = Release::create([
+            "name" => $name,
+            "artist_name" => $artist_name,
+            "description" => $description,
+            "release date" => $release_date
+        ]);
+
+        $new_release->save();
     }
 
     /**
@@ -36,7 +50,7 @@ class ReleaseController extends Controller
      */
     public function show(Release $release)
     {
-        //
+        return $release;
     }
 
     /**
@@ -59,6 +73,6 @@ class ReleaseController extends Controller
      */
     public function destroy(Release $release)
     {
-        //
+        Release::destroy($release);
     }
 }

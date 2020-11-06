@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\ReleaseController;
+use \App\Http\Controllers\TrackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get("/releases", [ReleaseController::class, "index"]);
+Route::get("/releases/{release}", [ReleaseController::class, "show"]);
+
+Route::get("/tracks", [TrackController::class, "index"]);
+Route::get("/tracks/{track}", [TrackController::class, "show"]);
