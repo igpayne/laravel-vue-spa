@@ -8,9 +8,9 @@
 
         <h1 class="my-4">Shop Name</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item">Category 1</a>
-          <a href="#" class="list-group-item">Category 2</a>
-          <a href="#" class="list-group-item">Category 3</a>
+          <a href="#" class="list-group-item" v-for="release in releases">
+              {{ release.name }}
+            </a>
         </div>
 
       </div>
@@ -153,3 +153,37 @@
 </div>
 
 </template>
+
+<script>
+    export default {
+        data: function() {
+            return {
+                releases: [],
+                tracks: [],
+            }
+        },
+
+        created() {
+            this.loadReleases();
+            //this.loadTracks();
+        },
+
+        methods: {
+            //loads releases from the API and catches errors
+            loadReleases: function() {
+                console.log("im running!");
+                axios.get("/api/releases")
+                .then((response) => {
+                    this.releases = response.data.data;
+                })
+                .catch(function (error) {
+                    console.log(error)
+                });
+            },
+
+            loadTracks: function() {
+
+            }
+        }
+    }
+</script>
