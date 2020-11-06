@@ -25,10 +25,10 @@ class TrackFactory extends Factory
         return [
             "release_id" => \App\Models\Release::factory(),
             "name" => $this->faker->word . " " . $this->faker->word,
-            "artist name" => $this->faker->word,
-            "artist features" => $this->faker->word,
+            "artist_name" => $this->faker->word,
+            "artist_features" => $this->faker->word,
             "description" => $this->faker->sentence,
-            "BPM" => $this->faker->numberBetween(55, 190)
+            "bpm" => $this->faker->numberBetween(55, 190)
         ];
     }
 }

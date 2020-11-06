@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Release;
 use Illuminate\Http\Request;
+use App\Http\Resources\ReleaseResource;
 
 class ReleaseController extends Controller
 {
@@ -14,7 +15,7 @@ class ReleaseController extends Controller
      */
     public function index()
     {
-        $releases = Release::orderBy("release date", "desc")->get();
+        $releases = ReleaseResource::collection(Release::orderBy("release_date", "desc")->get());
 
         return $releases;
     }
@@ -50,7 +51,7 @@ class ReleaseController extends Controller
      */
     public function show(Release $release)
     {
-        return $release;
+        return new ReleaseResource($release);
     }
 
     /**
