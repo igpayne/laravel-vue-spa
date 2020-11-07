@@ -2007,6 +2007,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CategoriesPanel_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CategoriesPanel.vue */ "./resources/js/components/CategoriesPanel.vue");
 /* harmony import */ var _FeaturedPanel_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FeaturedPanel.vue */ "./resources/js/components/FeaturedPanel.vue");
+/* harmony import */ var _ReleasesPanel_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReleasesPanel.vue */ "./resources/js/components/ReleasesPanel.vue");
 //
 //
 //
@@ -2033,109 +2034,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     CategoriesPanel: _CategoriesPanel_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    FeaturedPanel: _FeaturedPanel_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    FeaturedPanel: _FeaturedPanel_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ReleasesPanel: _ReleasesPanel_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -2159,6 +2065,44 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     loadTracks: function loadTracks() {}
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReleasesPanel.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReleasesPanel.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    releases: {
+      type: Array,
+      "default": []
+    }
   }
 });
 
@@ -19993,7 +19937,11 @@ var render = function() {
         _c(
           "div",
           { staticClass: "col-lg-9" },
-          [_c("FeaturedPanel"), _vm._v(" "), _vm._m(0)],
+          [
+            _c("FeaturedPanel"),
+            _vm._v(" "),
+            _c("ReleasesPanel", { attrs: { releases: _vm.releases } })
+          ],
           1
         )
       ],
@@ -20001,185 +19949,67 @@ var render = function() {
     )
   ])
 }
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReleasesPanel.vue?vue&type=template&id=4ead7fbd&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReleasesPanel.vue?vue&type=template&id=4ead7fbd& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row" },
+    _vm._l(_vm.releases, function(release) {
+      return _c(
+        "div",
+        { key: release.id, staticClass: "col-lg-4 col-md-6 mb-4" },
+        [
+          _c("div", { staticClass: "card h-100" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h4", { staticClass: "card-title" }, [
+                _c("a", { attrs: { href: "#" } }, [
+                  _vm._v(_vm._s(release.name))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(_vm._s(release.description))
+              ])
+            ])
+          ])
+        ]
+      )
+    }),
+    0
+  )
+}
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-        _c("div", { staticClass: "card h-100" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: "http://placehold.it/700x400", alt: "" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h4", { staticClass: "card-title" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("Item One")])
-            ]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("$24.99")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-        _c("div", { staticClass: "card h-100" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: "http://placehold.it/700x400", alt: "" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h4", { staticClass: "card-title" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("Item Two")])
-            ]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("$24.99")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet."
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-        _c("div", { staticClass: "card h-100" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: "http://placehold.it/700x400", alt: "" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h4", { staticClass: "card-title" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("Item Three")])
-            ]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("$24.99")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-        _c("div", { staticClass: "card h-100" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: "http://placehold.it/700x400", alt: "" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h4", { staticClass: "card-title" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("Item Four")])
-            ]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("$24.99")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-        _c("div", { staticClass: "card h-100" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: "http://placehold.it/700x400", alt: "" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h4", { staticClass: "card-title" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("Item Five")])
-            ]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("$24.99")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet."
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-        _c("div", { staticClass: "card h-100" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: "http://placehold.it/700x400", alt: "" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h4", { staticClass: "card-title" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("Item Six")])
-            ]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("$24.99")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
-          ])
-        ])
-      ])
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("img", {
+        staticClass: "card-img-top",
+        attrs: { src: "http://placehold.it/700x400", alt: "" }
+      })
     ])
   }
 ]
@@ -32616,6 +32446,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FrontPage_vue_vue_type_template_id_e04b9306___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FrontPage_vue_vue_type_template_id_e04b9306___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ReleasesPanel.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/ReleasesPanel.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReleasesPanel_vue_vue_type_template_id_4ead7fbd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReleasesPanel.vue?vue&type=template&id=4ead7fbd& */ "./resources/js/components/ReleasesPanel.vue?vue&type=template&id=4ead7fbd&");
+/* harmony import */ var _ReleasesPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReleasesPanel.vue?vue&type=script&lang=js& */ "./resources/js/components/ReleasesPanel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReleasesPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReleasesPanel_vue_vue_type_template_id_4ead7fbd___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReleasesPanel_vue_vue_type_template_id_4ead7fbd___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ReleasesPanel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ReleasesPanel.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/ReleasesPanel.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReleasesPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ReleasesPanel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReleasesPanel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReleasesPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ReleasesPanel.vue?vue&type=template&id=4ead7fbd&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/ReleasesPanel.vue?vue&type=template&id=4ead7fbd& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReleasesPanel_vue_vue_type_template_id_4ead7fbd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ReleasesPanel.vue?vue&type=template&id=4ead7fbd& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReleasesPanel.vue?vue&type=template&id=4ead7fbd&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReleasesPanel_vue_vue_type_template_id_4ead7fbd___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReleasesPanel_vue_vue_type_template_id_4ead7fbd___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
