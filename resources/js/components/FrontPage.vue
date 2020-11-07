@@ -4,16 +4,9 @@
 
     <div class="row">
 
-      <div class="col-lg-3">
-
-        <h1 class="my-4">Shop Name</h1>
-        <div class="list-group">
-          <a href="#" class="list-group-item" v-for="release in releases">
-              {{ release.name }}
-            </a>
-        </div>
-
-      </div>
+        <CategoriesPanel
+            v-bind:categories="releases"
+        />
 
       <div class="col-lg-9">
 
@@ -148,42 +141,46 @@
 
     </div>
 
-  </div>
-
 </div>
 
 </template>
 
 <script>
-    export default {
-        data: function() {
-            return {
-                releases: [],
-                tracks: [],
-            }
+import CategoriesPanel from "./CategoriesPanel.vue"
+
+export default {
+    components: {
+        CategoriesPanel
+    },
+
+    data: function() {
+        return {
+            releases: [],
+            tracks: [],
+        }
+    },
+
+    created() {
+        this.loadReleases();
+        //this.loadTracks();
+    },
+
+    methods: {
+        //loads releases from the API and catches errors
+        loadReleases: function() {
+            console.log("im running!");
+            axios.get("/api/releases")
+            .then((response) => {
+                this.releases = response.data.data;
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
         },
 
-        created() {
-            this.loadReleases();
-            //this.loadTracks();
-        },
+        loadTracks: function() {
 
-        methods: {
-            //loads releases from the API and catches errors
-            loadReleases: function() {
-                console.log("im running!");
-                axios.get("/api/releases")
-                .then((response) => {
-                    this.releases = response.data.data;
-                })
-                .catch(function (error) {
-                    console.log(error)
-                });
-            },
-
-            loadTracks: function() {
-
-            }
         }
     }
+}
 </script>

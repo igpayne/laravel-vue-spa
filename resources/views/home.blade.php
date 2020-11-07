@@ -49,7 +49,9 @@
   </nav>
 
   <div id="app">
-    <front-page></front-page>
+    <front-page>
+        <side-panel></side-panel>
+    </front-page>
   </div>
 
   <!-- Page Content -->
