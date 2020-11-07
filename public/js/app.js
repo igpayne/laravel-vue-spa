@@ -1932,6 +1932,70 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FeaturedPanel.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FeaturedPanel.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    featured: {
+      type: Object,
+      "default": function _default() {
+        return {
+          first: {
+            id: 1,
+            image: "http://placehold.it/900x350"
+          },
+          second: {
+            id: 2,
+            image: "http://placehold.it/900x350"
+          },
+          third: {
+            id: 3,
+            image: "http://placehold.it/900x350"
+          }
+        };
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FrontPage.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FrontPage.vue?vue&type=script&lang=js& ***!
@@ -1942,30 +2006,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CategoriesPanel_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CategoriesPanel.vue */ "./resources/js/components/CategoriesPanel.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _FeaturedPanel_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FeaturedPanel.vue */ "./resources/js/components/FeaturedPanel.vue");
 //
 //
 //
@@ -2090,9 +2131,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    CategoriesPanel: _CategoriesPanel_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    CategoriesPanel: _CategoriesPanel_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    FeaturedPanel: _FeaturedPanel_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -19797,6 +19840,134 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FeaturedPanel.vue?vue&type=template&id=3085931b&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FeaturedPanel.vue?vue&type=template&id=3085931b& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "carousel slide my-4",
+      attrs: { id: "carouselFeatured", "data-ride": "carousel" }
+    },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "carousel-inner", attrs: { role: "listbox" } }, [
+        _c("div", { staticClass: "carousel-item active" }, [
+          _c("img", {
+            staticClass: "d-block img-fluid",
+            attrs: { src: _vm.featured.first.image, alt: "First slide" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "carousel-item" }, [
+          _c("img", {
+            staticClass: "d-block img-fluid",
+            attrs: { src: _vm.featured.second.image, alt: "Second slide" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "carousel-item" }, [
+          _c("img", {
+            staticClass: "d-block img-fluid",
+            attrs: { src: _vm.featured.third.image, alt: "Third slide" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ol", { staticClass: "carousel-indicators" }, [
+      _c("li", {
+        staticClass: "active",
+        attrs: { "data-target": "#carouselFeatured", "data-slide-to": "0" }
+      }),
+      _vm._v(" "),
+      _c("li", {
+        attrs: { "data-target": "#carouselFeatured", "data-slide-to": "1" }
+      }),
+      _vm._v(" "),
+      _c("li", {
+        attrs: { "data-target": "#carouselFeatured", "data-slide-to": "2" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev",
+        attrs: {
+          href: "#carouselFeatured",
+          role: "button",
+          "data-slide": "prev"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-prev-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next",
+        attrs: {
+          href: "#carouselFeatured",
+          role: "button",
+          "data-slide": "next"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-next-icon",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FrontPage.vue?vue&type=template&id=e04b9306&":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FrontPage.vue?vue&type=template&id=e04b9306& ***!
@@ -19819,7 +19990,12 @@ var render = function() {
       [
         _c("CategoriesPanel", { attrs: { categories: _vm.releases } }),
         _vm._v(" "),
-        _vm._m(0)
+        _c(
+          "div",
+          { staticClass: "col-lg-9" },
+          [_c("FeaturedPanel"), _vm._v(" "), _vm._m(0)],
+          1
+        )
       ],
       1
     )
@@ -19830,288 +20006,177 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-9" }, [
-      _c(
-        "div",
-        {
-          staticClass: "carousel slide my-4",
-          attrs: { id: "carouselExampleIndicators", "data-ride": "carousel" }
-        },
-        [
-          _c("ol", { staticClass: "carousel-indicators" }, [
-            _c("li", {
-              staticClass: "active",
-              attrs: {
-                "data-target": "#carouselExampleIndicators",
-                "data-slide-to": "0"
-              }
-            }),
-            _vm._v(" "),
-            _c("li", {
-              attrs: {
-                "data-target": "#carouselExampleIndicators",
-                "data-slide-to": "1"
-              }
-            }),
-            _vm._v(" "),
-            _c("li", {
-              attrs: {
-                "data-target": "#carouselExampleIndicators",
-                "data-slide-to": "2"
-              }
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
+        _c("div", { staticClass: "card h-100" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              staticClass: "card-img-top",
+              attrs: { src: "http://placehold.it/700x400", alt: "" }
             })
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "carousel-inner", attrs: { role: "listbox" } },
-            [
-              _c("div", { staticClass: "carousel-item active" }, [
-                _c("img", {
-                  staticClass: "d-block img-fluid",
-                  attrs: {
-                    src: "http://placehold.it/900x350",
-                    alt: "First slide"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "carousel-item" }, [
-                _c("img", {
-                  staticClass: "d-block img-fluid",
-                  attrs: {
-                    src: "http://placehold.it/900x350",
-                    alt: "Second slide"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "carousel-item" }, [
-                _c("img", {
-                  staticClass: "d-block img-fluid",
-                  attrs: {
-                    src: "http://placehold.it/900x350",
-                    alt: "Third slide"
-                  }
-                })
-              ])
-            ]
-          ),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", { staticClass: "card-title" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Item One")])
+            ]),
+            _vm._v(" "),
+            _c("h5", [_vm._v("$24.99")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
+              )
+            ])
+          ]),
           _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-prev",
-              attrs: {
-                href: "#carouselExampleIndicators",
-                role: "button",
-                "data-slide": "prev"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "carousel-control-prev-icon",
-                attrs: { "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-next",
-              attrs: {
-                href: "#carouselExampleIndicators",
-                role: "button",
-                "data-slide": "next"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "carousel-control-next-icon",
-                attrs: { "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-            ]
-          )
-        ]
-      ),
+          _c("div", { staticClass: "card-footer" }, [
+            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
+          ])
+        ])
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-          _c("div", { staticClass: "card h-100" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                staticClass: "card-img-top",
-                attrs: { src: "http://placehold.it/700x400", alt: "" }
-              })
+      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
+        _c("div", { staticClass: "card h-100" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              staticClass: "card-img-top",
+              attrs: { src: "http://placehold.it/700x400", alt: "" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", { staticClass: "card-title" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Item Two")])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h4", { staticClass: "card-title" }, [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Item One")])
-              ]),
-              _vm._v(" "),
-              _c("h5", [_vm._v("$24.99")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-                )
-              ])
-            ]),
+            _c("h5", [_vm._v("$24.99")]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet."
+              )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer" }, [
+            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-          _c("div", { staticClass: "card h-100" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                staticClass: "card-img-top",
-                attrs: { src: "http://placehold.it/700x400", alt: "" }
-              })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
+        _c("div", { staticClass: "card h-100" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              staticClass: "card-img-top",
+              attrs: { src: "http://placehold.it/700x400", alt: "" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", { staticClass: "card-title" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Item Three")])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h4", { staticClass: "card-title" }, [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Item Two")])
-              ]),
-              _vm._v(" "),
-              _c("h5", [_vm._v("$24.99")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet."
-                )
-              ])
-            ]),
+            _c("h5", [_vm._v("$24.99")]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
+              )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer" }, [
+            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-          _c("div", { staticClass: "card h-100" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                staticClass: "card-img-top",
-                attrs: { src: "http://placehold.it/700x400", alt: "" }
-              })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
+        _c("div", { staticClass: "card h-100" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              staticClass: "card-img-top",
+              attrs: { src: "http://placehold.it/700x400", alt: "" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", { staticClass: "card-title" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Item Four")])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h4", { staticClass: "card-title" }, [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Item Three")])
-              ]),
-              _vm._v(" "),
-              _c("h5", [_vm._v("$24.99")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-                )
-              ])
-            ]),
+            _c("h5", [_vm._v("$24.99")]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
+              )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer" }, [
+            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-          _c("div", { staticClass: "card h-100" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                staticClass: "card-img-top",
-                attrs: { src: "http://placehold.it/700x400", alt: "" }
-              })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
+        _c("div", { staticClass: "card h-100" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              staticClass: "card-img-top",
+              attrs: { src: "http://placehold.it/700x400", alt: "" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", { staticClass: "card-title" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Item Five")])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h4", { staticClass: "card-title" }, [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Item Four")])
-              ]),
-              _vm._v(" "),
-              _c("h5", [_vm._v("$24.99")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-                )
-              ])
-            ]),
+            _c("h5", [_vm._v("$24.99")]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet."
+              )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer" }, [
+            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-          _c("div", { staticClass: "card h-100" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                staticClass: "card-img-top",
-                attrs: { src: "http://placehold.it/700x400", alt: "" }
-              })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
+        _c("div", { staticClass: "card h-100" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              staticClass: "card-img-top",
+              attrs: { src: "http://placehold.it/700x400", alt: "" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", { staticClass: "card-title" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Item Six")])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h4", { staticClass: "card-title" }, [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Item Five")])
-              ]),
-              _vm._v(" "),
-              _c("h5", [_vm._v("$24.99")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet."
-                )
-              ])
-            ]),
+            _c("h5", [_vm._v("$24.99")]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
+              )
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4 col-md-6 mb-4" }, [
-          _c("div", { staticClass: "card h-100" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                staticClass: "card-img-top",
-                attrs: { src: "http://placehold.it/700x400", alt: "" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h4", { staticClass: "card-title" }, [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Item Six")])
-              ]),
-              _vm._v(" "),
-              _c("h5", [_vm._v("$24.99")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!"
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
-            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer" }, [
+            _c("small", { staticClass: "text-muted" }, [_vm._v("★ ★ ★ ★ ☆")])
           ])
         ])
       ])
@@ -32413,6 +32478,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CategoriesPanel_vue_vue_type_template_id_4e196dad___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CategoriesPanel_vue_vue_type_template_id_4e196dad___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/FeaturedPanel.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/FeaturedPanel.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FeaturedPanel_vue_vue_type_template_id_3085931b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FeaturedPanel.vue?vue&type=template&id=3085931b& */ "./resources/js/components/FeaturedPanel.vue?vue&type=template&id=3085931b&");
+/* harmony import */ var _FeaturedPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FeaturedPanel.vue?vue&type=script&lang=js& */ "./resources/js/components/FeaturedPanel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FeaturedPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FeaturedPanel_vue_vue_type_template_id_3085931b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FeaturedPanel_vue_vue_type_template_id_3085931b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/FeaturedPanel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/FeaturedPanel.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/FeaturedPanel.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FeaturedPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./FeaturedPanel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FeaturedPanel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FeaturedPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/FeaturedPanel.vue?vue&type=template&id=3085931b&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/FeaturedPanel.vue?vue&type=template&id=3085931b& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FeaturedPanel_vue_vue_type_template_id_3085931b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./FeaturedPanel.vue?vue&type=template&id=3085931b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FeaturedPanel.vue?vue&type=template&id=3085931b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FeaturedPanel_vue_vue_type_template_id_3085931b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FeaturedPanel_vue_vue_type_template_id_3085931b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
