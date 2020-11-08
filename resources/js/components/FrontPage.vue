@@ -9,23 +9,9 @@
     </div>
 
     <div class="row">
-
-<!--
-        <CategoriesPanel
-            v-bind:categories="genres"
-        />
--->
       <div class="col-lg-12 mb-auto">
-
         <FeaturedPanel/>
-
-<!--
-        <ReleasesPanel
-            v-bind:releases="releases"
-        />
--->
       </div>
-
     </div>
 
     <div class="row">
@@ -42,43 +28,29 @@
 </template>
 
 <script>
-import CategoriesPanel from "./CategoriesPanel.vue"
 import FeaturedPanel from "./FeaturedPanel.vue"
-import ReleasesPanel from "./ReleasesPanel.vue"
 
 export default {
     components: {
-        CategoriesPanel, FeaturedPanel, ReleasesPanel
+        FeaturedPanel
     },
 
     data: function() {
         return {
-            releases: [],
-            genres: []
+            featuredReleases: []
         }
     },
 
     created() {
-        this.loadReleases();
-        this.loadGenres();
+        this.loadFeatured();
     },
 
     methods: {
-        //loads releases from the API and catches errors
-        loadReleases: function() {
-            axios.get("/api/releases")
+        //loads featured releases from the API and catches errors
+        loadFeatured: function() {
+            axios.get("/api/releases/featured")
             .then((response) => {
-                this.releases = response.data.data;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        },
-
-        loadGenres: function() {
-            axios.get("/api/genres")
-            .then((response) => {
-                this.genres = response.data.data;
+                this.featuredReleases = response.data.data;
             })
             .catch((error) => {
                 console.log(error);
