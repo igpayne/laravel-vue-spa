@@ -20,6 +20,13 @@ class ReleaseController extends Controller
         return $releases;
     }
 
+    public function featured()
+    {
+        $featuredReleases = $this->index()->take(3);
+
+        return $featuredReleases;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
