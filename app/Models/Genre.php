@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Release extends Model
+class Genre extends Model
 {
     use HasFactory;
 
     public function tracks() {
-        return $this->hasMany("App\Models\Track");
-    }
-
-    public function genres() {
-        return $this->belongToMany("App\Models\Genre");
+        return $this->belongsToMany("App\Model\Releases");
     }
 }
