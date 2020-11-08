@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Release extends Model
 {
     use HasFactory;
+
+    public function tracks() {
+        return $this->hasMany("App\Models\Track");
+    }
 }
