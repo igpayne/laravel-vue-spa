@@ -14,6 +14,6 @@ class Release extends Model
     }
 
     public function genres() {
-        return $this->belongToMany("App\Models\Genre");
+        return $this->belongsToMany("App\Models\Genre");
     }
 }
