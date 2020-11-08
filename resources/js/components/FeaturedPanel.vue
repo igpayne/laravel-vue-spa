@@ -36,15 +36,15 @@ export default {
                 return {
                     first: {
                         id: 1,
-                        image: "http://placehold.it/900x350"
+                        image: "http://placehold.it/1200x350"
                     },
                     second: {
                         id: 2,
-                        image: "http://placehold.it/900x350"
+                        image: "http://placehold.it/1200x350"
                     },
                     third: {
                         id: 3,
-                        image: "http://placehold.it/900x350"
+                        image: "http://placehold.it/1200x350"
                     }
                 }
             }
