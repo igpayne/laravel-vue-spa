@@ -2034,6 +2034,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2046,25 +2047,33 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       releases: [],
-      tracks: []
+      genres: []
     };
   },
   created: function created() {
-    this.loadReleases(); //this.loadTracks();
+    this.loadReleases();
+    this.loadGenres();
   },
   methods: {
     //loads releases from the API and catches errors
     loadReleases: function loadReleases() {
       var _this = this;
 
-      console.log("im running!");
       axios.get("/api/releases").then(function (response) {
         _this.releases = response.data.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    loadTracks: function loadTracks() {}
+    loadGenres: function loadGenres() {
+      var _this2 = this;
+
+      axios.get("/api/genres").then(function (response) {
+        _this2.genres = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -19928,25 +19937,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: "row" },
-      [
-        _c("CategoriesPanel", { attrs: { categories: _vm.releases } }),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-lg-9" },
-          [
-            _c("FeaturedPanel"),
-            _vm._v(" "),
-            _c("ReleasesPanel", { attrs: { releases: _vm.releases } })
-          ],
-          1
-        )
-      ],
-      1
-    )
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-lg-12" },
+        [
+          _c("FeaturedPanel"),
+          _vm._v(" "),
+          _c("ReleasesPanel", { attrs: { releases: _vm.releases } })
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = []

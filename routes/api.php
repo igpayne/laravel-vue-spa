@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ReleaseController;
 use \App\Http\Controllers\TrackController;
+use \App\Http\Controllers\GenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,5 @@ Route::get("/releases/{release}", [ReleaseController::class, "show"]);
 
 Route::get("/tracks", [TrackController::class, "index"]);
 Route::get("/tracks/{track}", [TrackController::class, "show"]);
+
+Route::get("/genres", [GenreController::class, "index"]);

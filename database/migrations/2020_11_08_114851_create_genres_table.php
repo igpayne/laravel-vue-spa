@@ -15,13 +15,15 @@ class CreateGenresTable extends Migration
     {
         Schema::create('genres', function (Blueprint $table) {
             $table->id();
-            $table->string("genre_name");
+            $table->string("name");
+            $table->timestamps();
         });
 
         Schema::create('genre_release', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("genre_id");
             $table->unsignedBigInteger("release_id");
+            $table->timestamps();
 
             $table->unique("genre_id", "release_id");
 
