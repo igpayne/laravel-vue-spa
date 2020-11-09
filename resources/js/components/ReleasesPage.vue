@@ -2,33 +2,30 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-lg-12 text-center mt-5">
-            <h1>Featured Releases</h1>
+        <div class="col-lg-3">
+            <GenresPanel
+                v-bind:genres="genres"
+                v-on:genreFilter="genreFilter($event)"
+            />
         </div>
-    </div>
 
-    <div class="row">
-
-        <CategoriesPanel
-            v-bind:categories="genres"
-        />
-
-        <ReleasesPanel
-            v-bind:releases="releases"
-        />
-
+        <div class="col-lg-9">
+            <ReleasesPanel
+                v-bind:releases="releases"
+            ></ReleasesPanel>
+        </div>
     </div>
 
 </div>
 </template>
 
 <script>
-import CategoriesPanel from "./CategoriesPanel.vue"
+import GenresPanel from "./GenresPanel.vue"
 import ReleasesPanel from "./ReleasesPanel.vue"
 
 export default {
     components: {
-        CategoriesPanel, ReleasesPanel
+        GenresPanel, ReleasesPanel
     },
 
     data: function() {
@@ -55,10 +52,22 @@ export default {
             });
         },
 
+        //loads genres from api
         loadGenres: function() {
             axios.get("/api/genres")
             .then((response) => {
                 this.genres = response.data.data;
+                console.log(this.genres);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
+
+        genreFilter: function(genreId) {
+            axios.get("/api/releases?genre=" + genreId)
+            .then((response) => {
+                this.releases = response.data.data;
             })
             .catch((error) => {
                 console.log(error);
