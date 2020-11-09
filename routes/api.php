@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get("/releases", [ReleaseController::class, "index"]);
+Route::post("/releases", [ReleaseController::class, "store"]);
 Route::get("/releases/featured", [ReleaseController::class, "featured"]);
 Route::get("/releases/{release}", [ReleaseController::class, "show"]);
 

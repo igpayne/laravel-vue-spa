@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Release;
 use App\Models\Genre;
+use App\Models\Track;
+
 use Illuminate\Http\Request;
 use App\Http\Resources\ReleaseResource;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Log;
 
 class ReleaseController extends Controller
 {
@@ -44,19 +47,38 @@ class ReleaseController extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->input("name");
-        $artist_name = $request->input("artist name");
-        $description = $request->input("description");
-        $release_date = $request->input("release date");
+        Log::info($request);
 
-        $new_release = Release::create([
-            "name" => $name,
-            "artist_name" => $artist_name,
-            "description" => $description,
-            "release date" => $release_date
+        $request->validate([
+            "name" => "required",
+            "description" => "required",
+            "genre" => "required",
+            "tracks.*.name" => "required",
+            "tracks.*.bpm" => "required"
         ]);
 
+        Log::info("reached");
+
+        $new_release = new Release;
+        $new_release->name = $request->input("name");
+        $new_release->description = $request->input("description");
         $new_release->save();
+
+        Log::info("reached");
+
+        $genre = Genre::find($request->input("genre"));
+        $genre->releases()->save($new_release);
+
+        //$new_release->genres()->save($genre);
+        
+        foreach ($request->input("tracks") as $track) {
+            Log::info("reached");
+            $new_track = new Track();
+            $new_track->release_id = $new_release->id;
+            $new_track->name = $track["name"];
+            $new_track->bpm = $track["bpm"];
+            $new_track->save();
+        }
     }
 
     /**

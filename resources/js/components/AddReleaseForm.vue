@@ -6,7 +6,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Publish new release</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="resetData">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -14,6 +14,12 @@
       <div class="modal-body" v-if="!submitPressed">
         <!-- Form -->
         <form>
+            <div class="alert alert-success text-center" role="alert" v-if="submitSuccess">
+                Release successfully added!
+            </div>
+            <div class="alert alert-error text-center" role="alert" v-if="submitFailure">
+                Error adding release, please check fields!
+            </div>
             <div class="form-group">
                 <label for="releaseName">Release name</label>
                 <input type="text" class="form-control" id="releaseName" placeholder="Release Name" v-model="newRelease.name">
@@ -22,6 +28,10 @@
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" placeholder="Enter a description" v-model="newRelease.description"></textarea >
             </div>
+            <select class="custom-select" v-model="newRelease.genre">
+                <option selected>Pick a genre</option>
+                <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
+            </select>
             <div class="form-group">
                 <label for="releaseCoverImage">Upload release cover</label>
                 <input type="file" class="form-control-file" id="releaseCoverImage">
@@ -43,13 +53,9 @@
         </form>
       </div>
 
-        <div v-if="submitPressed">
-            <p class="text-center">Processing submission...</p>
-        </div>
-
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" v-on:click="submit"  v-if="!submitPressed">Submit</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" v-on:click="submit" v-if="!submitPressed">Submit</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="resetData">Close</button>
       </div>
 
     </div>
@@ -62,18 +68,36 @@
 export default {
     data: function() {
         return {
+            genres: [],
+
             newRelease: {
                 name: "",
                 description: "",
+                genre: "",
                 tracks: []
             },
 
+            submitSuccess: false,
+            submitFailure: false,
             submitPressed: false,
-            submitSuccess: false
         }
+    },
+
+    created() {
+        this.loadGenres();        
     },
     
     methods: {
+        loadGenres: function() {
+            axios.get("/api/genres")
+            .then((response) => {
+                this.genres = response.data.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
+        
         addTrack: function() {
             this.newRelease.tracks.push({
                 number: this.newRelease.tracks.length + 1,
@@ -86,12 +110,33 @@ export default {
             this.submitPressed = true;
             axios.post("/api/releases", this.newRelease)
             .then((response) => {
-                console.log(response);
-                this.submitSuccess();
+                this.succeed();
+                this.resetData();
             })
             .catch((error) => {
+                this.fail();
                 console.log(error);
             })
+        },
+
+        resetData: function() {
+            this.newRelease = {
+                name: "",
+                description: "",
+                genre: "",
+                tracks: []
+            };
+            this.submitPressed = false;
+        },
+
+        fail: function() {
+            this.submitFailure = true;
+            this.submitSuccess = false;
+        },
+
+        succeed: function() {
+            this.submitFailure = false;
+            this.submitSuccess = true;
         }
     }
 }

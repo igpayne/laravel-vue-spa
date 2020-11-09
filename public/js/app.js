@@ -1899,6 +1899,151 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddReleaseForm.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AddReleaseForm.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      genres: [],
+      newRelease: {
+        name: "",
+        description: "",
+        genre: "",
+        tracks: []
+      },
+      submitSuccess: false,
+      submitFailure: false,
+      submitPressed: false
+    };
+  },
+  created: function created() {
+    this.loadGenres();
+  },
+  methods: {
+    loadGenres: function loadGenres() {
+      var _this = this;
+
+      axios.get("/api/genres").then(function (response) {
+        _this.genres = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    addTrack: function addTrack() {
+      this.newRelease.tracks.push({
+        number: this.newRelease.tracks.length + 1,
+        name: "",
+        bpm: ""
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      this.submitPressed = true;
+      axios.post("/api/releases", this.newRelease).then(function (response) {
+        _this2.succeed();
+
+        _this2.resetData();
+      })["catch"](function (error) {
+        _this2.fail();
+
+        console.log(error);
+      });
+    },
+    resetData: function resetData() {
+      this.newRelease = {
+        name: "",
+        description: "",
+        genre: "",
+        tracks: []
+      };
+      this.submitPressed = false;
+    },
+    fail: function fail() {
+      this.submitFailure = true;
+      this.submitSuccess = false;
+    },
+    succeed: function succeed() {
+      this.submitFailure = false;
+      this.submitSuccess = true;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FeaturedPanel.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FeaturedPanel.vue?vue&type=script&lang=js& ***!
@@ -1973,6 +2118,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FeaturedPanel_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FeaturedPanel.vue */ "./resources/js/components/FeaturedPanel.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -2164,6 +2313,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddReleaseForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddReleaseForm.vue */ "./resources/js/components/AddReleaseForm.vue");
 //
 //
 //
@@ -2188,12 +2338,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    AddReleaseForm: _AddReleaseForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: {
     releases: {
       type: Array,
       "default": []
     }
+  },
+  methods: {
+    newRelease: function newRelease() {}
   }
 });
 
@@ -19832,6 +19995,348 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddReleaseForm.vue?vue&type=template&id=d5c45796&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AddReleaseForm.vue?vue&type=template&id=d5c45796& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal",
+      attrs: { tabindex: "-1", role: "dialog", id: "addReleaseModal" }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _c("div", { staticClass: "modal-header" }, [
+            _c("h5", { staticClass: "modal-title" }, [
+              _vm._v("Publish new release")
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "close",
+                attrs: {
+                  type: "button",
+                  "data-dismiss": "modal",
+                  "aria-label": "Close"
+                },
+                on: { click: _vm.resetData }
+              },
+              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+            )
+          ]),
+          _vm._v(" "),
+          !_vm.submitPressed
+            ? _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  [
+                    _vm.submitSuccess
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "alert alert-success text-center",
+                            attrs: { role: "alert" }
+                          },
+                          [
+                            _vm._v(
+                              "\r\n                Release successfully added!\r\n            "
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.submitFailure
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "alert alert-error text-center",
+                            attrs: { role: "alert" }
+                          },
+                          [
+                            _vm._v(
+                              "\r\n                Error adding release, please check fields!\r\n            "
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "releaseName" } }, [
+                        _vm._v("Release name")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.newRelease.name,
+                            expression: "newRelease.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "releaseName",
+                          placeholder: "Release Name"
+                        },
+                        domProps: { value: _vm.newRelease.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.newRelease,
+                              "name",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "description" } }, [
+                        _vm._v("Description")
+                      ]),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.newRelease.description,
+                            expression: "newRelease.description"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "description",
+                          placeholder: "Enter a description"
+                        },
+                        domProps: { value: _vm.newRelease.description },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.newRelease,
+                              "description",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.newRelease.genre,
+                            expression: "newRelease.genre"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.newRelease,
+                              "genre",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { selected: "" } }, [
+                          _vm._v("Pick a genre")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.genres, function(genre) {
+                          return _c(
+                            "option",
+                            { key: genre.id, domProps: { value: genre.id } },
+                            [_vm._v(_vm._s(genre.name))]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.newRelease.tracks, function(track) {
+                      return _c("div", { key: track.id }, [
+                        _c("h5", [
+                          _c("strong", [
+                            _vm._v("Track " + _vm._s(track.number))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "trackName" } }, [
+                            _vm._v("Track name")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: track.name,
+                                expression: "track.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "tracksName",
+                              placeholder: "Track Name"
+                            },
+                            domProps: { value: track.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(track, "name", $event.target.value)
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "trackName" } }, [
+                            _vm._v("Track BPM")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: track.bpm,
+                                expression: "track.bpm"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "tracksName",
+                              placeholder: "Track BPM"
+                            },
+                            domProps: { value: track.bpm },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(track, "bpm", $event.target.value)
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button" },
+                          on: { click: _vm.addTrack }
+                        },
+                        [_vm._v("Add track")]
+                      )
+                    ])
+                  ],
+                  2
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-footer" }, [
+            !_vm.submitPressed
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.submit }
+                  },
+                  [_vm._v("Submit")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button", "data-dismiss": "modal" },
+                on: { click: _vm.resetData }
+              },
+              [_vm._v("Close")]
+            )
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "releaseCoverImage" } }, [
+        _vm._v("Upload release cover")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control-file",
+        attrs: { type: "file", id: "releaseCoverImage" }
+      })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/FeaturedPanel.vue?vue&type=template&id=3085931b&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/FeaturedPanel.vue?vue&type=template&id=3085931b& ***!
@@ -19991,7 +20496,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12 text-left mt-5" }, [
+      _c("div", { staticClass: "col-lg-9 text-left mt-5" }, [
         _c("h1", [_vm._v("Featured Releases")])
       ])
     ])
@@ -20001,16 +20506,24 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12 text-left" }, [
+      _c("div", { staticClass: "col-lg-12 text-left mb-5" }, [
         _c("div", { staticClass: "col-lg-12 text-left mt-5 mb-5" }, [
           _c("div", { staticClass: "text-left mb-5" }, [
             _c("h1", [_vm._v("About Us")])
           ]),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            )
+          _c("div", { staticClass: "text-left mb-5" }, [
+            _c("p", [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              )
+            ])
           ])
         ])
       ])
@@ -20406,46 +20919,65 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row" },
-      _vm._l(_vm.releases, function(release) {
-        return _c(
-          "div",
-          { key: release.id, staticClass: "col-lg-4 col-md-6 mb-4" },
-          [
-            _c("div", { staticClass: "card h-100" }, [
-              _vm._m(1, true),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("h4", { staticClass: "card-title" }, [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v(_vm._s(release.name))
-                  ])
-                ]),
+  return _c(
+    "div",
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row" },
+        _vm._l(_vm.releases, function(release) {
+          return _c(
+            "div",
+            { key: release.id, staticClass: "col-lg-4 col-md-6 mb-4" },
+            [
+              _c("div", { staticClass: "card h-100" }, [
+                _vm._m(1, true),
                 _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(_vm._s(release.description))
+                _c("div", { staticClass: "card-body" }, [
+                  _c("h4", { staticClass: "card-title" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v(_vm._s(release.name))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(_vm._s(release.description))
+                  ])
                 ])
               ])
-            ])
-          ]
-        )
-      }),
-      0
-    )
-  ])
+            ]
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("AddReleaseForm")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c("h1", { staticClass: "mb-5 mt-5 text-left" }, [_vm._v("Releases")])
+    return _c("div", { staticClass: "row mb-5 mt-5" }, [
+      _c("div", { staticClass: "col-lg-9" }, [
+        _c("h1", { staticClass: "text-left" }, [_vm._v("Releases")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-3 mt-3" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { "data-toggle": "modal", "data-target": "#addReleaseModal" }
+          },
+          [_vm._v("Add new release")]
+        )
+      ])
     ])
   },
   function() {
@@ -32714,6 +33246,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/AddReleaseForm.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/AddReleaseForm.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddReleaseForm_vue_vue_type_template_id_d5c45796___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddReleaseForm.vue?vue&type=template&id=d5c45796& */ "./resources/js/components/AddReleaseForm.vue?vue&type=template&id=d5c45796&");
+/* harmony import */ var _AddReleaseForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddReleaseForm.vue?vue&type=script&lang=js& */ "./resources/js/components/AddReleaseForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AddReleaseForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddReleaseForm_vue_vue_type_template_id_d5c45796___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddReleaseForm_vue_vue_type_template_id_d5c45796___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AddReleaseForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AddReleaseForm.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/AddReleaseForm.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddReleaseForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AddReleaseForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddReleaseForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddReleaseForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AddReleaseForm.vue?vue&type=template&id=d5c45796&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/AddReleaseForm.vue?vue&type=template&id=d5c45796& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddReleaseForm_vue_vue_type_template_id_d5c45796___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AddReleaseForm.vue?vue&type=template&id=d5c45796& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddReleaseForm.vue?vue&type=template&id=d5c45796&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddReleaseForm_vue_vue_type_template_id_d5c45796___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddReleaseForm_vue_vue_type_template_id_d5c45796___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
