@@ -3,6 +3,9 @@
 @section("content")
 <div id="app">
 
+<login-modal></login-modal>
+<register-modal></register-modal>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/">Team Ill Records</a>
@@ -18,9 +21,6 @@
             </li>
             <li class="nav-item">
                 <button type="button" class="btn btn-link nav-link" v-on:click="releases">Releases</button>
-            </li>
-            <li class="nav-item">
-                <button type="button" class="btn btn-link nav-link">VIP</button>
             </li>
             @auth
             <li class="nav-item">
@@ -39,10 +39,8 @@
     </div>
 </nav>
 
+<component :is="currentPage"><component>
 
-    <login-modal></login-modal>
-    <register-modal></register-modal>
-    <component :is="currentPage"><component>
 </div>
 
 
