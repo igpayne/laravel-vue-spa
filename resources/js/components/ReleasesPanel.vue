@@ -1,8 +1,12 @@
 <template>
 <div>
-    
-    <div class="text-center">
-        <h1 class="mb-5 mt-5 text-left">Releases</h1>
+    <div class="row mb-5 mt-5">
+        <div class="col-lg-9">
+            <h1 class="text-left">Releases</h1>
+        </div>
+        <div class="col-lg-3 mt-3">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addReleaseModal">Add new release</button>
+        </div>
     </div>
     
     <div class="row">
@@ -19,15 +23,29 @@
         </div>
     </div>
 
+    <AddReleaseForm></AddReleaseForm>
+
 </div>
 </template>
 
 <script>
+import AddReleaseForm from "./AddReleaseForm.vue";
+
 export default {
+    components: {
+        AddReleaseForm
+    },
+
     props: {
         releases: {
             type: Array,
             default: []
+        }
+    },
+
+    methods: {
+        newRelease: function() {
+
         }
     }
 }
