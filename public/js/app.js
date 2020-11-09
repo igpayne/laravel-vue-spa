@@ -1992,6 +1992,7 @@ __webpack_require__.r(__webpack_exports__);
     this.loadGenres();
   },
   methods: {
+    // retrieves all available genres via api
     loadGenres: function loadGenres() {
       var _this = this;
 
@@ -2008,6 +2009,7 @@ __webpack_require__.r(__webpack_exports__);
         bpm: ""
       });
     },
+    // sends a post request via api using data created via the form
     submit: function submit() {
       var _this2 = this;
 
@@ -2016,12 +2018,15 @@ __webpack_require__.r(__webpack_exports__);
         _this2.succeed();
 
         _this2.resetData();
+
+        _this2.$emit("refreshReleases");
       })["catch"](function (error) {
         _this2.fail();
 
         console.log(error);
       });
     },
+    // resets data bound to the form
     resetData: function resetData() {
       this.newRelease = {
         name: "",
@@ -2208,6 +2213,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     genres: {
@@ -2230,6 +2238,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GenresPanel_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GenresPanel.vue */ "./resources/js/components/GenresPanel.vue");
 /* harmony import */ var _ReleasesPanel_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReleasesPanel.vue */ "./resources/js/components/ReleasesPanel.vue");
+//
+//
 //
 //
 //
@@ -2290,6 +2300,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
+    //filter the releases displayed showing only those with a genre of genreId
     genreFilter: function genreFilter(genreId) {
       var _this3 = this;
 
@@ -2344,6 +2355,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2354,9 +2370,6 @@ __webpack_require__.r(__webpack_exports__);
       type: Array,
       "default": []
     }
-  },
-  methods: {
-    newRelease: function newRelease() {}
   }
 });
 
@@ -20574,7 +20587,23 @@ var render = function() {
         )
       }),
       0
-    )
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary mt-2 mb-2",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              return _vm.$emit("refreshReleases")
+            }
+          }
+        },
+        [_vm._v("Reset filter")]
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -20881,7 +20910,8 @@ var render = function() {
             on: {
               genreFilter: function($event) {
                 return _vm.genreFilter($event)
-              }
+              },
+              refreshReleases: _vm.loadReleases
             }
           })
         ],
@@ -20891,7 +20921,12 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-lg-9" },
-        [_c("ReleasesPanel", { attrs: { releases: _vm.releases } })],
+        [
+          _c("ReleasesPanel", {
+            attrs: { releases: _vm.releases },
+            on: { refreshReleases: _vm.loadReleases }
+          })
+        ],
         1
       )
     ])
@@ -20953,7 +20988,13 @@ var render = function() {
         0
       ),
       _vm._v(" "),
-      _c("AddReleaseForm")
+      _c("AddReleaseForm", {
+        on: {
+          refreshReleases: function($event) {
+            return _vm.$emit("refreshReleases")
+          }
+        }
+      })
     ],
     1
   )
