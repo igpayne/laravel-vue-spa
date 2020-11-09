@@ -6,6 +6,7 @@
 <login-modal></login-modal>
 <register-modal></register-modal>
 
+<!-- Navigation bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/">Team Ill Records</a>
@@ -42,7 +43,6 @@
 <component :is="currentPage"><component>
 
 </div>
-
 
 <!-- Vue app script -->
 <script src="/js/app.js"></script>

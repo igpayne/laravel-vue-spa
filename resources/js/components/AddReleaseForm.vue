@@ -88,6 +88,7 @@ export default {
     },
     
     methods: {
+        // retrieves all available genres via api
         loadGenres: function() {
             axios.get("/api/genres")
             .then((response) => {
@@ -97,7 +98,7 @@ export default {
                 console.log(error);
             });
         },
-        
+
         addTrack: function() {
             this.newRelease.tracks.push({
                 number: this.newRelease.tracks.length + 1,
@@ -106,6 +107,7 @@ export default {
             })
         },
 
+        // sends a post request via api using data created via the form
         submit: function() {
             this.submitPressed = true;
             axios.post("/api/releases", this.newRelease)
@@ -120,6 +122,7 @@ export default {
             })
         },
 
+        // resets data bound to the form
         resetData: function() {
             this.newRelease = {
                 name: "",
