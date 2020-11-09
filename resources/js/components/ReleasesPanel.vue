@@ -1,5 +1,6 @@
 <template>
 <div>
+    <!-- Title row with button -->
     <div class="row mb-5 mt-5">
         <div class="col-lg-9">
             <h1 class="text-left">Releases</h1>
@@ -9,6 +10,7 @@
         </div>
     </div>
     
+    <!-- Panel containing all releases -->
     <div class="row">
         <div class="col-lg-4 col-md-6 mb-4" v-for="release in releases" :key="release.id">
             <div class="card h-100">
@@ -23,6 +25,7 @@
         </div>
     </div>
 
+    <!-- Form displayed on 'Add new release' button press -->
     <AddReleaseForm
         v-on:refreshReleases="$emit('refreshReleases')"
     ></AddReleaseForm>

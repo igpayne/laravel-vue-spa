@@ -10,6 +10,9 @@
             {{ genre.name }}
         </button>
     </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-primary mt-2 mb-2" @click="$emit('refreshReleases')">Reset filter</button>
+    </div>
 </div>
 
 </template>

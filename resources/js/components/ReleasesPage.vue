@@ -6,6 +6,7 @@
             <GenresPanel
                 v-bind:genres="genres"
                 v-on:genreFilter="genreFilter($event)"
+                v-on:refreshReleases="loadReleases"
             />
         </div>
 
