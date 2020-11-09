@@ -112,6 +112,7 @@ export default {
             .then((response) => {
                 this.succeed();
                 this.resetData();
+                this.$emit("refreshReleases");
             })
             .catch((error) => {
                 this.fail();

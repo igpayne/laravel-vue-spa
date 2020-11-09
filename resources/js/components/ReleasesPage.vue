@@ -12,6 +12,7 @@
         <div class="col-lg-9">
             <ReleasesPanel
                 v-bind:releases="releases"
+                v-on:refreshReleases="loadReleases"
             ></ReleasesPanel>
         </div>
     </div>
@@ -64,6 +65,7 @@ export default {
             });
         },
 
+        //filter the releases displayed showing only those with a genre of genreId
         genreFilter: function(genreId) {
             axios.get("/api/releases?genre=" + genreId)
             .then((response) => {

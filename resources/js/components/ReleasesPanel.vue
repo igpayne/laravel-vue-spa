@@ -23,7 +23,9 @@
         </div>
     </div>
 
-    <AddReleaseForm></AddReleaseForm>
+    <AddReleaseForm
+        v-on:refreshReleases="$emit('refreshReleases')"
+    ></AddReleaseForm>
 
 </div>
 </template>
@@ -40,12 +42,6 @@ export default {
         releases: {
             type: Array,
             default: []
-        }
-    },
-
-    methods: {
-        newRelease: function() {
-
         }
     }
 }
