@@ -19,7 +19,7 @@ class CreateGenresTable extends Migration
             $table->timestamps();
         });
 
-        S1chema::create('genre_release', function (Blueprint $table) {
+        Schema::create('genre_release', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("genre_id");
             $table->unsignedBigInteger("release_id");
