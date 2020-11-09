@@ -17,9 +17,6 @@ class Track extends Migration
             $table->id();
             $table->foreignId("release_id");
             $table->string('name');
-            $table->string("artist_name");
-            $table->string("artist_features");
-            $table->string('description');
             $table->smallInteger("bpm");
             $table->timestamps();
         });
