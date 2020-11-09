@@ -19,13 +19,13 @@ class CreateGenresTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('genre_release', function (Blueprint $table) {
+        S1chema::create('genre_release', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("genre_id");
             $table->unsignedBigInteger("release_id");
             $table->timestamps();
 
-            $table->unique("genre_id", "release_id");
+            $table->unique(["genre_id", "release_id"]);
 
             $table->foreign("genre_id")->references("id")->on("genres")->onDelete("cascade");
             $table->foreign("release_id")->references("id")->on("releases")->onDelete("cascade");
