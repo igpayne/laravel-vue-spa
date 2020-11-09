@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Release;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use App\Http\Resources\ReleaseResource;
+use Symfony\Component\Console\Input\Input;
 
 class ReleaseController extends Controller
 {
@@ -15,9 +17,16 @@ class ReleaseController extends Controller
      */
     public function index()
     {
-        $releases = ReleaseResource::collection(Release::orderBy("release_date", "desc")->get());
+        $releases = Release::latest()->get();
 
-        return $releases;
+        if (request("genre")) 
+        {
+            $releases = Genre::where("id", request("genre"))->firstOrFail()->releases;
+            
+            return ReleaseResource::collection($releases);
+        }
+    
+        return ReleaseResource::collection($releases);
     }
 
     public function featured()
