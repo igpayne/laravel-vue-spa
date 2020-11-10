@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ReleaseController;
 use \App\Http\Controllers\TrackController;
 use \App\Http\Controllers\GenreController;
+use \App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ use \App\Http\Controllers\GenreController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post("/login", [LoginController::class, "authenticate"]);
+Route::post("/register", [LoginController::class, "register"]);
 
 Route::get("/releases", [ReleaseController::class, "index"]);
 Route::post("/releases", [ReleaseController::class, "store"]);

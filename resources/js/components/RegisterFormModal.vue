@@ -15,22 +15,22 @@
         <!-- Form -->
         <form>
             <div class="form-group">
-                <label for="emailAddress">Username</label>
-                <input type="email" class="form-control" id="emailAddress" aria-describedby="emailHelp" placeholder="Enter a username">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter a username" v-model="accountDetails.username">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" placeholder="Enter a password" v-model="accountDetails.password">
             </div>
             <div class="form-group">
-                <label for="password">Confirm Password</label>
-                <input type="password" class="form-control" id="passwordConfirm" placeholder="Password">
+                <label for="repeat_password">Repeat Password</label>
+                <input type="password" class="form-control" id="repeat_password" placeholder="Repeat your password" v-model="accountDetails.repeat_password">
             </div>
         </form>
 
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Create Account</button>
+        <button type="button" class="btn btn-primary" v-if="validated" v-on:click="register">Create Account</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -38,3 +38,50 @@
 </div>
 
 </template>
+
+<script>
+export default {
+    data: function() {
+        return {
+            lastAttemptFailed: false,
+            lastAttemptSucceeded: false,
+            accountDetails: {
+                username: "",
+                password: "",
+                repeat_password: ""
+            }
+        }
+    },
+
+    computed: {
+        validated: function() {
+            return (this.accountDetails.username != "" && this.accountDetails.password != "") 
+            && (this.accountDetails.password == this.accountDetails.repeat_password);
+        }
+    },
+
+    methods: {
+        register: function() {
+            axios.post("/api/register", this.accountDetails)
+            .then((response) => {
+                this.lastAttemptSucceeded = true;
+                this.resetData();
+                window.location.reload();
+            })
+            .catch((error) => {
+                this.lastAttemptFailed = true;
+                this.resetData();
+                console.log(error);
+            })
+        },
+
+        resetData: function() {
+            this.accountDetails = {
+                username: "",
+                password: "",
+                repeat_password: ""
+            }
+        }
+    }
+}
+</script>
