@@ -4,7 +4,7 @@ The software functions as a music label's website that allows users to browse re
 In the future, this could be extended as a webstore or as a place for fans to get updates on the label. 
 
 I decided to implement the project as a single-page application since I was interested to know how they worked.
-There are a number of single file Vue components (/js/components/) which make up the majority of the front end, which use API routes defined in Laravel to request/send data when they need to. 
+There are a number of single file Vue components (resources/js/components/) which make up the majority of the front end, which use API routes defined in Laravel to request/send data when they need to. 
 	
 There is one blade file, home.blade.php (plus a template), returned from the only web GET request which links to app.js, which then starts Vue and loads the other components.
 
