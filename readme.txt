@@ -22,16 +22,13 @@ Users can:
 		- view releases by genre
 		- add a new release which can contain any number of tracks
 
-	- Open login/registration forms 
+	- login/register 
 
 Things that could be implemented in future:
 
 	- Images:
 		-allow uploading of release covers
 		-retrieve release coverers for view using API
-
-	- Authentication:
-		- connect Login and Signup forms to API endpoints to authenticate users
 
 	- Authorization:
 		- ensure only admins can add releases
