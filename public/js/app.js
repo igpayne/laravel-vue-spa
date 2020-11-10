@@ -2301,13 +2301,13 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/login", this.loginDetails).then(function (response) {
         _this.resetData();
 
-        window.location.reload;
+        window.location.reload();
       })["catch"](function (error) {
         console.log(error);
       });
     },
     resetData: function resetData() {
-      loginDetails = {
+      this.loginDetails = {
         username: "",
         password: "",
         rememberMe: false

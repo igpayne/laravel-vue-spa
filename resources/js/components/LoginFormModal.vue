@@ -64,7 +64,7 @@ export default {
             axios.post("/api/login", this.loginDetails)
             .then((response) => {
                this.resetData();
-               window.location.reload;
+               window.location.reload();
             })
             .catch((error) => {
                 console.log(error);
@@ -72,7 +72,7 @@ export default {
         },
 
         resetData: function() {
-            loginDetails = {
+            this.loginDetails = {
                 username: "",
                 password: "",
                 rememberMe: false
