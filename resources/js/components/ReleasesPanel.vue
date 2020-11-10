@@ -21,6 +21,11 @@
                 </h4>
                 <p class="card-text">{{release.description}}</p>
                 </div>
+                <!-- Footer needs implementing still
+                <div class="card-footer">
+                    <small class="text-muted"> {{ releaseGenreNames["1"] }} </small>
+                </div>
+                -->
             </div>
         </div>
     </div>

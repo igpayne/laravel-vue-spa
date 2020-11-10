@@ -5,6 +5,7 @@ import FrontPage from "./components/FrontPage.vue";
 import ReleasesPage from "./components/ReleasesPage.vue";
 import LoginFormModal from "./components/LoginFormModal.vue";
 import RegisterFormModal from "./components/RegisterFormModal.vue";
+import LogoutButton from "./components/LogoutButton.vue";
 
 //create a new vue instance with id: app
 const app = new Vue({
@@ -14,7 +15,8 @@ const app = new Vue({
         "front-page": FrontPage, 
         "releases-page": ReleasesPage,
         "login-modal": LoginFormModal, 
-        "register-modal": RegisterFormModal
+        "register-modal": RegisterFormModal,
+        "logout-button": LogoutButton
     },
 
     data: function () {

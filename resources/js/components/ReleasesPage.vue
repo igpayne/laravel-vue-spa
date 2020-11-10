@@ -33,7 +33,8 @@ export default {
     data: function() {
         return {
             releases: [],
-            genres: []
+            genres: [],
+            //releaseGenreNames: {}
         }
     },
 
@@ -48,6 +49,7 @@ export default {
             axios.get("/api/releases")
             .then((response) => {
                 this.releases = response.data.data;
+                //this.populateReleaseGenreNames();
             })
             .catch(function (error) {
                 console.log(error);
@@ -59,7 +61,6 @@ export default {
             axios.get("/api/genres")
             .then((response) => {
                 this.genres = response.data.data;
-                console.log(this.genres);
             })
             .catch((error) => {
                 console.log(error);
@@ -76,6 +77,24 @@ export default {
                 console.log(error);
             });
         }
+
+/*
+        populateReleaseGenreNames: function() {
+            this.releases.forEach((release) => {
+                this.setGenreForRelease(release.id);
+            });
+        },
+
+        setGenreForRelease: function(releaseId) {
+            axios.get("/api/genres?release=" + releaseId)
+            .then((response) => {
+                this.releaseGenreNames[releaseId.toString()] = response.data.data[0].name;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
+        */
     }
 }
 

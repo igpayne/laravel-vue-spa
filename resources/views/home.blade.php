@@ -27,6 +27,7 @@
             <li class="nav-item">
                 <button type="button" class="btn btn-link nav-link">My Account</button>
             </li>
+            <logout-button></logout-button>
             @else
             <li class="nav-item">
                 <button type="button" class="btn btn-link nav-link" data-toggle="modal" data-target="#loginModal">Log In</button>
