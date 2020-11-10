@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Log;
 
 class ReleaseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $releases = Release::latest()->get();
@@ -39,16 +34,9 @@ class ReleaseController extends Controller
         return $featuredReleases;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        Log::info($request);
-
+        //validate the request
         $request->validate([
             "name" => "required",
             "description" => "required",
@@ -57,20 +45,17 @@ class ReleaseController extends Controller
             "tracks.*.bpm" => "required"
         ]);
 
-        Log::info("reached");
-
+        //construct the Release
         $new_release = new Release;
         $new_release->name = $request->input("name");
         $new_release->description = $request->input("description");
         $new_release->save();
 
-        Log::info("reached");
-
+        //attach the genre to the new release (using genre_release table) 
         $genre = Genre::find($request->input("genre"));
         $genre->releases()->save($new_release);
-
-        //$new_release->genres()->save($genre);
         
+        //construct each Track and link to the Release
         foreach ($request->input("tracks") as $track) {
             Log::info("reached");
             $new_track = new Track();
@@ -81,35 +66,16 @@ class ReleaseController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Release  $release
-     * @return \Illuminate\Http\Response
-     */
     public function show(Release $release)
     {
         return new ReleaseResource($release);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Release  $release
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Release $release)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Release  $release
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Release $release)
     {
         Release::destroy($release);
