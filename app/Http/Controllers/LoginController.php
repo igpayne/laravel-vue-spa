@@ -17,8 +17,10 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $remember_me)) 
         {
-            return redirect("/");
+            return response("Success", 200);
         }
+
+        return response("Login failed", 400);
     }
 
     public function register(Request $request)
@@ -39,13 +41,17 @@ class LoginController extends Controller
             $new_user->save();
 
             Auth::login($new_user);
+
+            return response("Success", 200);
         }
+
+        return response("Register failed", 400);
     }
 
     public function logout()
     {
         Auth::logout();
 
-        return redirect("/");
+        return response("Success", 200);
     }
 }
