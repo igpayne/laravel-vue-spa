@@ -11,7 +11,12 @@
         </button>
       </div>
       <div class="modal-body">
-        
+
+        <!-- Error alert -->
+        <div class="alert alert-danger text-center" role="alert" v-if="lastAttemptFailed">
+            Error logging in, please check details and try again
+        </div>
+
         <!-- Form -->
         <form>
             <div class="form-group">
@@ -30,7 +35,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" v-if="validated" v-on:click="login">Submit</button>
+        <button type="submit" class="btn btn-primary" :disabled="!formValidated" v-on:click="login">Submit</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -43,7 +48,7 @@
 export default {
     data: function() {
         return {
-            buttonPressed: false,
+            lastAttemptFailed: false,
             loginDetails: {
                 username: "",
                 password: "",
@@ -53,30 +58,36 @@ export default {
     },
 
     computed: {
-        validated: function() {
-            return (this.loginDetails.username != "" && this.loginDetails.password != "");
+        formValidated: function() {
+            return this.validateInputLength(this.loginDetails.username, 32)
+                && this.validateInputLength(this.loginDetails.password, 32)
         }
     },
 
     methods: {
         login: function() {
-            this.buttonPressed = true;
             axios.post("/api/login", this.loginDetails)
             .then((response) => {
-               this.resetData();
-               window.location.reload();
+                this.resetData();
+                window.location.reload();
             })
             .catch((error) => {
+                this.lastAttemptFailed = true;
                 console.log(error);
             })
         },
 
         resetData: function() {
+            this.lastAttemptFailed = false;
             this.loginDetails = {
                 username: "",
                 password: "",
                 rememberMe: false
             }
+        },
+
+        validateInputLength(input, max) {
+            return input.length != "" && input.length < max;
         }
     }
 }

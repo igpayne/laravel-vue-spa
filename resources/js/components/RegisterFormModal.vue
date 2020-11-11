@@ -11,14 +11,14 @@
         </button>
       </div>
       <div class="modal-body">
+       
+        <!-- Error alert -->
+        <div class="alert alert-danger text-center" role="alert" v-if="lastAttemptFailed">
+            Error creating account, please try again
+        </div>
 
         <!-- Form -->
         <form>
-             <!-- Error alert -->
-            <div class="alert alert-danger text-center" role="alert" v-if="lastAttemptFailed">
-                Error creating account, please try again
-            </div>
-
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" placeholder="Enter a username" v-model="accountDetails.username">

@@ -7,28 +7,29 @@
       <div class="modal-header">
         <h5 class="modal-title">Publish new release</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="resetData">
-          <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
-      <div class="modal-body" v-if="!submitPressed">
+      <div class="modal-body">
         <!-- Form -->
         <form>
             <div class="alert alert-success text-center" role="alert" v-if="submitSuccess">
                 Release successfully added!
             </div>
-            <div class="alert alert-error text-center" role="alert" v-if="submitFailure">
-                Error adding release, please check fields!
+            <div class="alert alert-danger text-center" role="alert" v-if="submitFailure">
+                Error adding release, please check fields
             </div>
             <div class="form-group">
                 <label for="releaseName">Release name</label>
-                <input type="text" class="form-control" id="releaseName" placeholder="Release Name" v-model="newRelease.name">
+                <input type="text" class="form-control" id="releaseName" placeholder="Enter the name of the release" v-model="newRelease.name">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" placeholder="Enter a description" v-model="newRelease.description"></textarea >
             </div>
             <select class="custom-select" v-model="newRelease.genre">
+                <label for="genreSelect">Genre</label>
                 <option selected>Pick a genre</option>
                 <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
             </select>
@@ -54,7 +55,7 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" v-on:click="submit" v-if="!submitPressed">Submit</button>
+        <button type="button" class="btn btn-primary" :disabled="!formValidated" v-on:click="submit">Submit</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="resetData">Close</button>
       </div>
 
@@ -78,13 +79,20 @@ export default {
             },
 
             submitSuccess: false,
-            submitFailure: false,
-            submitPressed: false,
+            submitFailure: false
         }
     },
 
     created() {
         this.loadGenres();        
+    },
+
+    computed: {
+        formValidated: function() {
+            return this.validateInputLength(this.newRelease.name, 32)
+                && this.validateInputLength(this.newRelease.description, 250)
+                && this.validateTracks(this.newRelease.tracks);
+        }
     },
     
     methods: {
@@ -109,7 +117,6 @@ export default {
 
         // sends a post request via api using data created via the form
         submit: function() {
-            this.submitPressed = true;
             axios.post("/api/releases", this.newRelease)
             .then((response) => {
                 this.succeed();
@@ -130,7 +137,26 @@ export default {
                 genre: "",
                 tracks: []
             };
-            this.submitPressed = false;
+        },
+
+        validateInputLength(input, max) {
+            return input.length != "" && input.length < max;
+        },
+
+        validateTracks(tracks) {
+            if (tracks.length === 0) {
+                return false;
+            } 
+            else {
+                let validation = true;
+                tracks.forEach( (track) => {
+                    if (track.name.length == "" || track.bpm.length == "") {
+                        validation = false;
+                        return;
+                    }
+                });
+                return validation;
+            }
         },
 
         fail: function() {
