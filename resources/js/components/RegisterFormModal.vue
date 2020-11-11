@@ -11,9 +11,14 @@
         </button>
       </div>
       <div class="modal-body">
-        
+
         <!-- Form -->
         <form>
+             <!-- Error alert -->
+            <div class="alert alert-danger text-center" role="alert" v-if="lastAttemptFailed">
+                Error creating account, please try again
+            </div>
+
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" placeholder="Enter a username" v-model="accountDetails.username">
@@ -23,14 +28,14 @@
                 <input type="password" class="form-control" id="password" placeholder="Enter a password" v-model="accountDetails.password">
             </div>
             <div class="form-group">
-                <label for="repeat_password">Repeat Password</label>
+                <label for="repeat_password">Repeat password</label>
                 <input type="password" class="form-control" id="repeat_password" placeholder="Repeat your password" v-model="accountDetails.repeat_password">
             </div>
         </form>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" v-if="validated" v-on:click="register">Create Account</button>
+        <button type="button" class="btn btn-primary" :disabled="!formValidated" v-on:click="register">Create Account</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -44,7 +49,6 @@ export default {
     data: function() {
         return {
             lastAttemptFailed: false,
-            lastAttemptSucceeded: false,
             accountDetails: {
                 username: "",
                 password: "",
@@ -54,9 +58,10 @@ export default {
     },
 
     computed: {
-        validated: function() {
-            return (this.accountDetails.username != "" && this.accountDetails.password != "") 
-            && (this.accountDetails.password == this.accountDetails.repeat_password);
+        formValidated: function() {
+            return this.validateInputLength(this.accountDetails.username, 32)
+                && this.validateInputLength(this.accountDetails.password, 32) 
+                && (this.accountDetails.password == this.accountDetails.repeat_password);
         }
     },
 
@@ -64,7 +69,6 @@ export default {
         register: function() {
             axios.post("/api/register", this.accountDetails)
             .then((response) => {
-                this.lastAttemptSucceeded = true;
                 this.resetData();
                 window.location.reload();
             })
@@ -81,6 +85,10 @@ export default {
                 password: "",
                 repeat_password: ""
             }
+        },
+
+        validateInputLength(input, max) {
+            return input.length != "" && input.length < max;
         }
     }
 }
