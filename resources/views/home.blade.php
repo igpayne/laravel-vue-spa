@@ -41,7 +41,11 @@
     </div>
 </nav>
 
-<component :is="currentPage"><component>
+<component 
+    :is="currentPage" 
+    v-bind:current-properties="currentProperties" 
+    v-on:single-release-page="singleReleasePage($event)"
+></component>
 
 </div>
 

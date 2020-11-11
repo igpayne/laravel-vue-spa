@@ -3,6 +3,7 @@ window.Vue = require("vue");
 
 import FrontPage from "./components/FrontPage.vue";
 import ReleasesPage from "./components/ReleasesPage.vue";
+import SingleReleasePage from "./components/SingleReleasePage.vue";
 import LoginFormModal from "./components/LoginFormModal.vue";
 import RegisterFormModal from "./components/RegisterFormModal.vue";
 import LogoutButton from "./components/LogoutButton.vue";
@@ -14,6 +15,7 @@ const app = new Vue({
     components: {
         "front-page": FrontPage, 
         "releases-page": ReleasesPage,
+        "single-release-page": SingleReleasePage,
         "login-modal": LoginFormModal, 
         "register-modal": RegisterFormModal,
         "logout-button": LogoutButton
@@ -21,7 +23,16 @@ const app = new Vue({
 
     data: function () {
         return {
-            currentPage: "front-page"
+            currentPage: "front-page",
+            currentRelease: null
+        }
+    },
+
+    computed: {
+        currentProperties: function() {
+            if (this.currentPage == "single-release-page") {
+                return { releaseID: this.currentRelease}
+            }
         }
     },
 
@@ -32,6 +43,11 @@ const app = new Vue({
 
         frontPage: function() {
             this.currentPage = "front-page";
+        },
+
+        singleReleasePage: function(release) {
+            this.currentRelease = release;
+            this.currentPage = "single-release-page";
         }
     }
 });

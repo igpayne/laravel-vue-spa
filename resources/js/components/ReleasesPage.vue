@@ -13,6 +13,7 @@
         <div class="col-lg-9">
             <ReleasesPanel
                 v-bind:releases="releases"
+                v-on:singleReleasePage="$emit('single-release-page', $event)"
                 v-on:refreshReleases="loadReleases"
             ></ReleasesPanel>
         </div>
