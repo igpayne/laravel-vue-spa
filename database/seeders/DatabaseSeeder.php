@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
     {
         $genres = [
             Genre::factory()->create(["name" => "Drum and Bass"]),
-            Genre::factory()->create(["name" => "Dubstep"]),
+            Genre::factory()->create(["name" => "House"]),
             Genre::factory()->create(["name" => "Garage"]),
             Genre::factory()->create(["name" => "Techno"]),
             Genre::factory()->create(["name" => "Ambient"])

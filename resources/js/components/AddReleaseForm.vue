@@ -13,7 +13,7 @@
 
       <div class="modal-body">
         <!-- Form -->
-        <form>
+        <form enctype="multipart/form-data">
             <div class="alert alert-success text-center" role="alert" v-if="submitSuccess">
                 Release successfully added!
             </div>
@@ -35,7 +35,7 @@
             </select>
             <div class="form-group">
                 <label for="releaseCoverImage">Upload release cover</label>
-                <input type="file" class="form-control-file" id="releaseCoverImage">
+                <input type="file" accept="image/*" class="form-control-file" id="releaseCoverImage" @change="fileChange">
             </div>
             <div v-for="track in newRelease.tracks" :key="track.id">
                 <h5><strong>Track {{track.number}}</strong></h5>
@@ -78,6 +78,8 @@ export default {
                 tracks: []
             },
 
+            releaseCover: {},
+
             submitSuccess: false,
             submitFailure: false
         }
@@ -96,6 +98,11 @@ export default {
     },
     
     methods: {
+        fileChange: function(e) {
+            console.log(e.target.files[0])
+            this.releaseCover = e.target.files[0];
+        },
+
         // retrieves all available genres via api
         loadGenres: function() {
             axios.get("/api/genres")
@@ -117,7 +124,16 @@ export default {
 
         // sends a post request via api using data created via the form
         submit: function() {
-            axios.post("/api/releases", this.newRelease)
+            const config = {
+                headers: { 'content-type': 'multipart/form-data' }
+            }
+
+            let formData = new FormData();
+            const newReleaseJSON = JSON.stringify(this.newRelease);
+            formData.append("newRelease", newReleaseJSON);
+            formData.append("cover", this.releaseCover);
+
+            axios.post("/api/releases", formData, config)
             .then((response) => {
                 this.succeed();
                 this.resetData();

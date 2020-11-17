@@ -1984,6 +1984,7 @@ __webpack_require__.r(__webpack_exports__);
         genre: "",
         tracks: []
       },
+      releaseCover: {},
       submitSuccess: false,
       submitFailure: false
     };
@@ -1997,6 +1998,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    fileChange: function fileChange(e) {
+      console.log(e.target.files[0]);
+      this.releaseCover = e.target.files[0];
+    },
     // retrieves all available genres via api
     loadGenres: function loadGenres() {
       var _this = this;
@@ -2018,7 +2023,16 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this2 = this;
 
-      axios.post("/api/releases", this.newRelease).then(function (response) {
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      var formData = new FormData();
+      var newReleaseJSON = JSON.stringify(this.newRelease);
+      formData.append("newRelease", newReleaseJSON);
+      formData.append("cover", this.releaseCover);
+      axios.post("/api/releases", formData, config).then(function (response) {
         _this2.succeed();
 
         _this2.resetData();
@@ -20453,6 +20467,7 @@ var render = function() {
           _c("div", { staticClass: "modal-body" }, [
             _c(
               "form",
+              { attrs: { enctype: "multipart/form-data" } },
               [
                 _vm.submitSuccess
                   ? _c(
@@ -20603,7 +20618,21 @@ var render = function() {
                   2
                 ),
                 _vm._v(" "),
-                _vm._m(0),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "releaseCoverImage" } }, [
+                    _vm._v("Upload release cover")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control-file",
+                    attrs: {
+                      type: "file",
+                      accept: "image/*",
+                      id: "releaseCoverImage"
+                    },
+                    on: { change: _vm.fileChange }
+                  })
+                ]),
                 _vm._v(" "),
                 _vm._l(_vm.newRelease.tracks, function(track) {
                   return _c("div", { key: track.id }, [
@@ -20719,23 +20748,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "releaseCoverImage" } }, [
-        _vm._v("Upload release cover")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control-file",
-        attrs: { type: "file", id: "releaseCoverImage" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

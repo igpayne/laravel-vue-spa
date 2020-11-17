@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\ReleaseResource;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class ReleaseController extends Controller
 {
@@ -36,27 +37,44 @@ class ReleaseController extends Controller
 
     public function store(Request $request)
     {
-        //validate the request
+        Log::info($request->input("newRelease"));
+
+        //validate the overall request
         $request->validate([
+            "newRelease" => "required",
+            "cover" => "required"
+        ]);
+
+        //convert the json release data to a php array
+        $new_release_array = json_decode($request->input("newRelease"), true);
+
+        //construct validator and validate the release data
+        $release_validator = Validator::make($new_release_array, [
             "name" => "required",
             "description" => "required",
             "genre" => "required",
-            "tracks.*.name" => "required",
-            "tracks.*.bpm" => "required"
+            "newRelease.tracks.*.name" => "required",
+            "newRelease.tracks.*.bpm" => "required",
         ]);
+
+        $release_validator->validate();
+
+        //store image upload
+        $path = $request->file("cover")->store("covers");
 
         //construct the Release
         $new_release = new Release;
-        $new_release->name = $request->input("name");
-        $new_release->description = $request->input("description");
+        $new_release->name = $new_release_array["name"];
+        $new_release->description = $new_release_array["description"];
+        $new_release->cover_path = $path;
         $new_release->save();
 
         //attach the genre to the new release (using genre_release table) 
-        $genre = Genre::find($request->input("genre"));
+        $genre = Genre::find($new_release_array["genre"]);
         $genre->releases()->save($new_release);
         
         //construct each Track and link to the Release
-        foreach ($request->input("tracks") as $track) {
+        foreach ($new_release_array["tracks"] as $track) {
             Log::info("reached");
             $new_track = new Track();
             $new_track->release_id = $new_release->id;
