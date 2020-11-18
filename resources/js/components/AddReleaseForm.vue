@@ -28,11 +28,12 @@
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" placeholder="Enter a description" v-model="newRelease.description"></textarea >
             </div>
-            <select class="custom-select" v-model="newRelease.genre">
+            <div class="form-group">
                 <label for="genreSelect">Genre</label>
-                <option selected>Pick a genre</option>
-                <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
-            </select>
+                <select class="custom-select" id="genreSelect" v-model="newRelease.genre">
+                    <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="releaseCoverImage">Upload release cover</label>
                 <input type="file" accept="image/*" class="form-control-file" id="releaseCoverImage" @change="fileChange">
@@ -55,7 +56,7 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" :disabled="!formValidated" v-on:click="submit">Submit</button>
+        <button type="button" class="btn btn-primary" :disabled="!formValidated" v-on:click="submit">Add release</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="resetData">Close</button>
       </div>
 
@@ -153,6 +154,7 @@ export default {
                 genre: "",
                 tracks: []
             };
+            this.releaseCover = {};
         },
 
         validateInputLength(input, max) {
