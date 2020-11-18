@@ -24,7 +24,7 @@ class ReleaseFactory extends Factory
         return [
             "name" => $this->faker->word . " " . $this->faker->word,
             "description" => $this->faker->sentence,
-            "cover_path" => "https://via.placeholder.com/1000"
+            "cover_path" => "covers/placeholder.png"
             //"release_date" => $this->faker->dateTimeBetween($startDate = "0 years", $endDate = "+10 years")
         ];
     }

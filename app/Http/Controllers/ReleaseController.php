@@ -60,7 +60,7 @@ class ReleaseController extends Controller
         $release_validator->validate();
 
         //store image upload
-        $path = $request->file("cover")->store("covers");
+        $path = $request->file("cover")->storePublicly("covers", "public");
 
         //construct the Release
         $new_release = new Release;

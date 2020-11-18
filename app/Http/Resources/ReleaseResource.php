@@ -18,6 +18,7 @@ class ReleaseResource extends JsonResource
             "id" => $this->id,
             "name" => $this->name,
             "description" => $this->description,
+            "coverPath" => $this->cover_path
         ];
     }
 }
