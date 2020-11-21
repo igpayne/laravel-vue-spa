@@ -1,6 +1,6 @@
 require("./bootstrap");
-window.Vue = require("vue");
 
+import router from "./routes";
 import FrontPage from "./components/FrontPage.vue";
 import ReleasesPage from "./components/ReleasesPage.vue";
 import SingleReleasePage from "./components/SingleReleasePage.vue";
@@ -11,6 +11,8 @@ import LogoutButton from "./components/LogoutButton.vue";
 //create a new vue instance with id: app
 const app = new Vue({
     el: "#app",
+
+    router,
     
     components: {
         "front-page": FrontPage, 
@@ -18,7 +20,7 @@ const app = new Vue({
         "single-release-page": SingleReleasePage,
         "login-modal": LoginFormModal, 
         "register-modal": RegisterFormModal,
-        "logout-button": LogoutButton
+        "logout-button": LogoutButton,
     },
 
     data: function () {

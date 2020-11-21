@@ -1,6 +1,11 @@
 <template>
     <div class="card h-100">
+        <router-link :to="'/releases/' + release.id">
+            <img class="card-img-top" :src="'storage/' + release.coverPath" alt="">
+        </router-link>
+        <!--
         <a href="#" v-on:click="$emit('singleReleasePage', release.id)"><img class="card-img-top" :src="'storage/' + release.coverPath" alt=""></a>
+        -->
         <div class="card-body">
         <h4 class="card-title">
             <a href="#" v-on:click="$emit('singleReleasePage', release.id)">{{release.name}}</a>

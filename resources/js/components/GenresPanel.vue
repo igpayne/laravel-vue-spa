@@ -3,15 +3,15 @@
 <div>
     <h1 class="mt-5 mb-5 text-left">Genres</h1>
     <div class="list-group">
-        <button type="button" class="list-group-item btn btn-link" href="#" 
+        <router-link type="button" class="list-group-item btn btn-link"
         v-for="genre in genres" 
         :key="genre.id" 
-        v-on:click="$emit('genreFilter', genre.id)">
+        :to="'/releases?genre=' + genre.id" exact>
             {{ genre.name }}
-        </button>
+        </router-link>
     </div>
     <div class="text-center">
-        <button type="button" class="btn btn-primary mt-2 mb-2" @click="$emit('refreshReleases')">Reset filter</button>
+        <router-link type="button" class="btn btn-primary mt-2 mb-2" to="/releases">Reset filter</router-link>
     </div>
 </div>
 

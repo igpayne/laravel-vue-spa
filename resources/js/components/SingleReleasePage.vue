@@ -55,14 +55,9 @@
 
 <script>
     export default {
-        props: {
-            "current-properties": {
-                type: Object,
-                default: function() {
-                    return { releaseID: 0}
-                }
-            }
-        },
+        props: [
+            "releaseID"
+        ],
 
         data() {
             return {
@@ -77,9 +72,9 @@
         },
 
         created: function() {
-            this.fetchRelease(this.currentProperties.releaseID);
-            this.fetchGenres(this.currentProperties.releaseID);
-            this.fetchTracks(this.currentProperties.releaseID);
+            this.fetchRelease(this.releaseID);
+            this.fetchGenres(this.releaseID);
+            this.fetchTracks(this.releaseID);
         },
 
         methods: {

@@ -19,7 +19,7 @@
 
     <!-- Form displayed on 'Add new release' button press -->
     <AddReleaseForm
-        v-on:refreshReleases="$emit('refreshReleases')"
+        v-on:refreshReleases="loadReleases"
     ></AddReleaseForm>
 
 </div>
@@ -34,10 +34,38 @@ export default {
         AddReleaseForm, SingleReleaseCard
     },
 
-    props: {
-        releases: {
-            type: Array,
-            default: []
+    props: [
+        "genre"
+    ],
+
+    data: function() {
+        return {
+            releases: function() {
+                return {}
+            }
+        }
+    },
+
+    created: function () {
+        this.loadReleases();
+    },
+
+    methods: {
+        //loads releases from the API and catches errors
+        loadReleases: function() {
+            axios.get(!this.genre ? "/api/releases" : "/api/releases?genre=" + this.genre)
+            .then((response) => {
+                this.releases = response.data.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+
+    watch: {
+        genre: function() {
+            this.loadReleases();
         }
     }
 }
