@@ -15,14 +15,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <button type="button" class="btn btn-link nav-link" v-on:click="frontPage">Home
-                    <span class="sr-only">(current)</span>
-                </button>
-            </li>
-            <li class="nav-item">
-                <button type="button" class="btn btn-link nav-link" v-on:click="releases">Releases</button>
-            </li>
+            <router-link tag="li" to="/" exact>
+                <button type="button" class="btn btn-link nav-link">Home</button>
+            </router-link>
+            <router-link tag="li" to="/releases" exact>
+                <button type="button" class="btn btn-link nav-link">Releases</button>
+            </router-link>
             @auth
             <li class="nav-item">
                 <button type="button" class="btn btn-link nav-link">My Account</button>
@@ -41,11 +39,15 @@
     </div>
 </nav>
 
+<router-view></router-view>
+
+<!--
 <component 
     :is="currentPage" 
     v-bind:current-properties="currentProperties" 
     v-on:single-release-page="singleReleasePage($event)"
 ></component>
+-->
 
 </div>
 
