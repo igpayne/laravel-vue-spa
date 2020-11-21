@@ -20,22 +20,16 @@ Users can:
 	- visit the releases page via the navigation bar:
 		- view all releases
 		- view releases by genre
-		- add a new release which can contain any number of tracks
+		- add a new release which can contain any number of tracks and a cover image
+        
+    - visit an individual release's page by clicking on that release
 
 	- login/register 
 
 Things that could be implemented in future:
 
-	- Images:
-		-allow uploading of release covers
-		-retrieve release coverers for view using API
-
 	- Authorization:
 		- ensure only admins can add releases
-
-	- View for individual releases:
-		- clicking a release should load a view for it
-		- from here admins should be able to edit a view
 
 The Bootstrap template used can be found here: https://startbootstrap.com/template/shop-homepage
  
